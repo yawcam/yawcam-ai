@@ -5,7 +5,7 @@ Video surveillance software powered by Ai.
 Download the latest release here:  
 [Yawcam Ai](https://github.com/yawcam/yawcam-ai/releases/latest/download/yawcam-ai-windows.zip)
 
-View older releases here:  
+View older and beta releases here:  
 https://github.com/yawcam/yawcam-ai/releases
 
 ### Documentation
