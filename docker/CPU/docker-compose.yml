@@ -1,1 +1,16 @@
+services:
+  yawcam:
+    image: devprincekumar/yawcam-ai:latest
+    container_name: yawcam-cpu
+    restart: unless-stopped
+    ports:
+      - "5995:5995"
+      - "9081:9081"
+      - "9082:9082"
+    volumes:
+      - ./data/.yawcam-ai:/root/.yawcam-ai
+      - ./data/recordings:/root/yawcam-ai/videos
+    environment:
+      USE_GPU: "false"
+    command: ["--noview"]
 
