@@ -1,2 +1,14 @@
+# Docker bind mounts
 yawcam_data/
+docker/yawcam_data/
+*/yawcam_data/
+
+# Yawcam runtime artifacts
 *.log
+*.tmp
+
+# IDE / OS noise
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
