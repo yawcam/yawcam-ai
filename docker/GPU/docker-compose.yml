@@ -1,1 +1,19 @@
 
+services:
+  yawcam:
+    image: devprincekumar/yawcam-ai:cuda
+    container_name: yawcam-gpu
+    restart: unless-stopped
+    ports:
+      - "5996:5995"
+      - "9181:9081"
+      - "9182:9082"
+    volumes:
+      - ./data/.yawcam-ai:/root/.yawcam-ai
+      - ./data/recordings:/root/yawcam-ai/videos
+    runtime: nvidia
+    environment:
+      USE_GPU: "true"
+      NVIDIA_VISIBLE_DEVICES: "all"
+      NVIDIA_DRIVER_CAPABILITIES: "compute,utility"
+    command: ["--noview"]
