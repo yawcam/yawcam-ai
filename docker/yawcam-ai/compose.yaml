@@ -1,0 +1,12 @@
+services:
+  yawcam:
+    image: yawcam/yawcam-ai:latest
+    container_name: yawcam-ai
+    restart: unless-stopped
+    ports:
+      - "5995:5995"
+    volumes:
+      - ./data/.yawcam-ai:/root/.yawcam-ai
+      - ./data/videos:/root/yawcam-ai/videos
+    environment:
+      TZ: UTC # Set the timezone as needed, e.g., UTC or Europe/Stockholm
