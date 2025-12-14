@@ -37,10 +37,10 @@ RUN echo "Building version $YAWCAM_VERSION for architecture: $TARGETARCH" && \
     else \
         echo "Unsupported architecture: $TARGETARCH" && exit 1; \
     fi && \
-    # Download to /tmp and unzip
+    # Download to /tmp and unzip \
     curl -L -o /tmp/yawcam-ai.zip "$DOWNLOAD_URL" && \
     unzip /tmp/yawcam-ai.zip -d /opt && \
-    # Cleanup
+    # Cleanup \
     rm -rf /tmp/yawcam-ai.zip && \
     # Ensure the script is executable \
     chmod +x /opt/yawcam-ai/YawcamAi.sh && \
