@@ -66,8 +66,8 @@ jobs:
       - name: 🏗️ Build and Push, yawcam-ai
         uses: docker/build-push-action@v6
         with:
-          context: ./docker/yawcam-ai/ # Specifies the directory containing the Dockerfile
-          file: ./Dockerfile
+          context: .
+          file: ./docker/yawcam-ai/Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
@@ -95,8 +95,8 @@ jobs:
       - name: 🏗️ Build and Push, yawcam-ai-cuda
         uses: docker/build-push-action@v6
         with:
-          context: ./docker/yawcam-ai-cuda/ # Specifies the directory containing the Dockerfile
-          file: ./Dockerfile
+          context: .
+          file: ./docker/yawcam-ai-cuda/Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
