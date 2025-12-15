@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libasound2-dev \
     libdrm2 \
     libgtk2.0-0 \
+    libpulse0 \
     libx11-6 \
     libxtst6 \
     tzdata \
