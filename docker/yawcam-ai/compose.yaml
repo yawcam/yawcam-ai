@@ -3,6 +3,7 @@ services:
     image: yawcam/yawcam-ai:latest
     container_name: yawcam-ai
     restart: unless-stopped
+    stop_grace_period: 30s
     ports:
       - "5995:5995"
     volumes:
