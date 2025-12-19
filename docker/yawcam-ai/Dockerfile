@@ -43,6 +43,8 @@ RUN echo "Building version $YAWCAM_VERSION for architecture: $TARGETARCH" && \
     unzip /tmp/yawcam-ai.zip -d /opt && \
     # Cleanup \
     rm -rf /tmp/yawcam-ai.zip && \
+    # Add file to enable container mode \
+    echo -n "" > /opt/yawcam-ai/.container-mode && \
     # Ensure the script is executable \
     chmod +x /opt/yawcam-ai/YawcamAi.sh && \
     chmod +x /opt/yawcam-ai/YawcamAi-console.sh
