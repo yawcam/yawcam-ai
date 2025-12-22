@@ -10,7 +10,7 @@ env:
   DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
   PLATFORM: linux/amd64,linux/arm64
   BUILD_YAWCAM_AI: 'true'
-  BUILD_YAWCAM_AI_CUDA: 'false'
+  BUILD_YAWCAM_AI_CUDA: 'true'
 
 jobs:
   build_and_push:
