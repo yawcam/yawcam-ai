@@ -1,30 +1,38 @@
 # Docker images for Yawcam Ai
-There are pre-built container images available on [Docker Hub](https://hub.docker.com/u/yawcam) for easy deployment of 
-Yawcam Ai.
-
+Yawcam Ai is available on [Docker Hub](https://hub.docker.com/u/yawcam) for easy deployment.  
 The following images are provided:
-- `yawcam/yawcam-ai` - Detection with CPU only.
-- `yawcam/yawcam-ai-cuda` - Detection with Nvidia GPU using CUDA. (Graceful fallback to CPU if no GPU is available)
 
+| Image                   | Description                                                                                 |
+|-------------------------|---------------------------------------------------------------------------------------------|
+| `yawcam/yawcam-ai`      | Detection with CPU only.                                                                    |
+| `yawcam/yawcam-ai-cuda` | Detection with Nvidia GPU using CUDA.<br/>(Graceful fallback to CPU if no GPU is available) |
+
+## Architecture
 All images support multiple architectures, including `linux/amd64` and `linux/arm64`.
-This allows you to run the images on a variety of platforms, such as x86_64 based PCs, servers, NAS devices or NUCs 
-and ARM-based devices like Raspberry Pi. 
+This allows you to run the images on a variety of platforms, such as x86_64 based PCs, servers, NAS devices or NUCs
+and ARM-based devices like Raspberry Pi.
+
+If you are running Docker on a Windows host, please make sure to run Docker inside WSL2.
+See the [Windows considerations](#windows-considerations) section below for more info.
 
 ## Tags
-The images are tagged with version numbers and `latest` or `beta` tags for stable and beta releases, respectively.
-For example:
-- `yawcam/yawcam-ai:latest` - Latest stable release
-- `yawcam/yawcam-ai:beta` - Latest beta release
-- `yawcam/yawcam-ai:1.7.0` - Specific version
+The images are tagged with version number and `latest` or `edge` tags:
 
-Please note that the `beta` tag will always point to the most recent version, even if that version is the current stable 
-release. So choose the `beta` tag if you always want the newest features and improvements as soon as they are available. 
+| Tag            | Description                          |
+|----------------|--------------------------------------|
+| `latest`       | Latest stable release                |
+| `edge`         | Most recent release (Stable OR Beta) |
+| `1.7.0`        | Specific version (example)           |
+| `1.8.0-beta.2` | Specific version (example)           |
 
-Choose the `latest` tag if you prefer a more stable experience. The example docker compose files in this repo uses the 
+Please note that the `edge` tag will always point to the most recent version, regardless if that version is stable or beta.
+So choose the `edge` tag if you always want the newest features and improvements as soon as they are available.
+
+Choose the `latest` tag if you prefer a more stable experience. The example docker compose files use the
 `latest` tag by default.
 
 ## Running `yawcam-ai` with Docker Compose
-Use this image to run Yawcam Ai with detection on CPU only. View/modify the [example compose file](./yawcam-ai/compose.yaml) 
+Use this image to run Yawcam Ai with detection on CPU only. View/modify the example compose file [yawcam-ai/compose.yaml](./yawcam-ai/compose.yaml) 
 before running:
 ```bash
 docker pull yawcam/yawcam-ai:latest
@@ -34,26 +42,14 @@ Open the Yawcam Ai web interface in your browser at `http://localhost:5995` (or 
 or hostname of your Docker host).
 
 ## Running `yawcam-ai-cuda` with Docker Compose
-Use this image to run Yawcam Ai with detection using an Nvidia GPU with CUDA support. View/modify the 
-[example compose file](./yawcam-ai-cuda/compose.yaml) before running:
+Use this image to run Yawcam Ai with detection using an Nvidia GPU with CUDA support. View/modify the example compose file 
+[yawcam-ai-cuda/compose.yaml](./yawcam-ai-cuda/compose.yaml) before running:
 ```bash
 docker pull yawcam/yawcam-ai-cuda:latest
 docker compose -f ./yawcam-ai-cuda/compose.yaml up -d
 ```
 Open the Yawcam Ai web interface in your browser at `http://localhost:5995` (or replace `localhost` with the IP address 
 or hostname of your Docker host).
-
-## Running Yawcam Ai with Portainer
-You can also use [Portainer](https://www.portainer.io/) to deploy and manage the Yawcam Ai Docker containers.
-1. Open Portainer in your web browser and log in.
-2. Navigate to the "Stacks" section in the left sidebar.
-3. Click on the "Add stack" button.
-4. Enter a name for your stack, e.g., `yawcam-ai`.
-5. Copy the contents of the desired example compose file ([yawcam-ai/compose.yaml](./yawcam-ai/compose.yaml) or 
-[yawcam-ai-cuda/compose.yaml](./yawcam-ai-cuda/compose.yaml)) into the "Web editor" section.
-6. Click on the "Deploy the stack" button to create and start the container.
-7. Open the Yawcam Ai web interface in your browser at `http://<your-portainer-host>:5995`, replacing `<your-portainer-host>` with the IP address or hostname of your Portainer host.
-8. Done!
 
 ## Windows considerations
 When running the Yawcam Ai Docker containers on a Windows host, Yawcam Ai will not work as expected when mounting volumes
