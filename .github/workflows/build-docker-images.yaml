@@ -9,6 +9,8 @@ on:
 env:
   DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
   PLATFORM: linux/amd64,linux/arm64
+  BUILD_YAWCAM_AI: 'true'
+  BUILD_YAWCAM_AI_CUDA: 'false'
 
 jobs:
   build_and_push:
@@ -50,6 +52,7 @@ jobs:
 
       # --- Generate Metadata & Tags ---
       - name: 🐳 Docker Meta, yawcam-ai
+        if: ${{ env.BUILD_YAWCAM_AI == 'true' }}
         id: meta-yawcam-ai
         uses: docker/metadata-action@v5
         with:
@@ -64,6 +67,7 @@ jobs:
 
       # --- Build and Push the Image ---
       - name: 🏗️ Build and Push, yawcam-ai
+        if: ${{ env.BUILD_YAWCAM_AI == 'true' }}
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -77,6 +81,7 @@ jobs:
 
       # --- Generate Metadata & Tags ---
       - name: 🐳 Docker Meta, yawcam-ai-cuda
+        if: ${{ env.BUILD_YAWCAM_AI_CUDA == 'true' }}
         id: meta-yawcam-ai-cuda
         uses: docker/metadata-action@v5
         with:
@@ -91,6 +96,7 @@ jobs:
 
       # --- Build and Push the Image ---
       - name: 🏗️ Build and Push, yawcam-ai-cuda
+        if: ${{ env.BUILD_YAWCAM_AI_CUDA == 'true' }}
         uses: docker/build-push-action@v6
         with:
           context: .
