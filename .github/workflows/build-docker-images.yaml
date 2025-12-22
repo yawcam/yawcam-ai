@@ -57,8 +57,8 @@ jobs:
           tags: |
             # Only tag 'latest' if PRE_RELEASE is false
             type=raw,value=latest,enable=${{ env.PRE_RELEASE == 'false' }}
-            # Always set 'beta' tag to the most recent build
-            type=raw,value=beta
+            # Always set 'edge' tag to the most recent build
+            type=raw,value=edge
             # Always set version tag
             type=raw,value=${{ env.VERSION }}
 
@@ -84,8 +84,8 @@ jobs:
           tags: |
             # Only tag 'latest' if PRE_RELEASE is false
             type=raw,value=latest,enable=${{ env.PRE_RELEASE == 'false' }}
-            # Always set 'beta' tag to the most recent build
-            type=raw,value=beta
+            # Always set 'edge' tag to the most recent build
+            type=raw,value=edge
             # Always set version tag
             type=raw,value=${{ env.VERSION }}
 
