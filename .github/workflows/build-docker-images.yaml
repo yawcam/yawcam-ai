@@ -72,7 +72,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./docker/yawcam-ai
-          file: Dockerfile
+          file: ./docker/yawcam-ai/Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
@@ -101,7 +101,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./docker/yawcam-ai-cuda
-          file: Dockerfile
+          file: ./docker/yawcam-ai-cuda/Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
@@ -130,7 +130,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./docker/yawcam-ai-full
-          file: Dockerfile
+          file: ./docker/yawcam-ai-full/Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
