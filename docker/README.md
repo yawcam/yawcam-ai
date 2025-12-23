@@ -6,6 +6,7 @@ The following images are provided:
 |-------------------------|---------------------------------------------------------------------------------------------|
 | `yawcam/yawcam-ai`      | Detection with CPU only.                                                                    |
 | `yawcam/yawcam-ai-cuda` | Detection with Nvidia GPU using CUDA.<br/>(Graceful fallback to CPU if no GPU is available) |
+| `yawcam/yawcam-ai-full` | All models and CUDA libs included.<br/>No downloads required during initial setup.          |
 
 ## Architecture
 All images support multiple architectures, including `linux/amd64` and `linux/arm64`.
@@ -47,6 +48,17 @@ Use this image to run Yawcam Ai with detection using an Nvidia GPU with CUDA sup
 ```bash
 docker pull yawcam/yawcam-ai-cuda:latest
 docker compose -f ./yawcam-ai-cuda/compose.yaml up -d
+```
+Open the Yawcam Ai web interface in your browser at `http://localhost:5995` (or replace `localhost` with the IP address 
+or hostname of your Docker host).
+
+## Running `yawcam-ai-full` with Docker Compose
+Use this image to run Yawcam Ai with all models and CUDA libraries included. This image does not require any downloads 
+during the initial setup. View/modify the example compose file [yawcam-ai-full/compose.yaml](./yawcam-ai-full/compose.yaml) 
+before running:
+```bash
+docker pull yawcam/yawcam-ai-full:latest
+docker compose -f ./yawcam-ai-full/compose.yaml up -d
 ```
 Open the Yawcam Ai web interface in your browser at `http://localhost:5995` (or replace `localhost` with the IP address 
 or hostname of your Docker host).

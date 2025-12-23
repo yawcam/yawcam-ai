@@ -21,6 +21,7 @@ docker-compose configuration files in this repo to get you started quickly.
 Images:
 - `yawcam/yawcam-ai` - Detection with CPU only.
 - `yawcam/yawcam-ai-cuda` - Detection with Nvidia GPU using CUDA.
+- `yawcam/yawcam-ai-full` - All models and CUDA libs included.
 
 See [docker/README.md](docker/README.md) for more info on how to use the container images.
 

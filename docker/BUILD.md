@@ -6,6 +6,7 @@ All Dockerfiles handle multi-platform builds with buildx and can produce images 
 
 - `yawcam-ai/`[Dockerfile](./yawcam-ai/Dockerfile): Builds a Yawcam Ai image. (Detection with CPU only, no GPU support.)
 - `yawcam-ai-cuda/`[Dockerfile](./yawcam-ai-cuda/Dockerfile): Builds a Yawcam Ai image with CUDA support for NVIDIA GPUs.
+- `yawcam-ai-full/`[Dockerfile](./yawcam-ai-full/Dockerfile): Builds a Yawcam Ai image with all models and CUDA libs included. No downloads required during initial setup.
 
 ## Building locally with buildx
 To build the images locally using Docker buildx, follow these steps:
@@ -28,7 +29,7 @@ To build the images locally using Docker buildx, follow these steps:
 
 2) Run the buildx build command to build and push the desired image:
     ```bash
-    export TAG="latest"                 # set desired image tag. (latest or beta)
+    export TAG="latest"                 # set desired image tag
     export YAWCAM_VERSION="1.7.0"       # set desired Yawcam Ai version
     export DOCKER_USER="<docker-user>"  # set your Docker Hub username
     docker buildx build \
