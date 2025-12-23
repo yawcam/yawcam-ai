@@ -9,5 +9,6 @@ services:
     volumes:
       - ./data/.yawcam-ai:/root/.yawcam-ai   # Replace ./data with storage path
       - ./data/videos:/root/yawcam-ai/videos # Replace ./data with storage path
+      - ./data/.javacpp:/root/.javacpp       # Replace ./data with storage path
     environment:
       TZ: UTC # Set the timezone as needed, e.g. UTC or Europe/Stockholm
