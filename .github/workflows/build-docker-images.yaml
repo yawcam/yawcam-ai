@@ -71,8 +71,8 @@ jobs:
         if: ${{ env.BUILD_YAWCAM_AI == 'true' }}
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./docker/yawcam-ai/Dockerfile
+          context: ./docker/yawcam-ai
+          file: Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
@@ -100,8 +100,8 @@ jobs:
         if: ${{ env.BUILD_YAWCAM_AI_CUDA == 'true' }}
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./docker/yawcam-ai-cuda/Dockerfile
+          context: ./docker/yawcam-ai-cuda
+          file: Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
@@ -129,8 +129,8 @@ jobs:
         if: ${{ env.BUILD_YAWCAM_AI_FULL == 'true' }}
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./docker/yawcam-ai-full/Dockerfile
+          context: ./docker/yawcam-ai-full
+          file: Dockerfile
           platforms: ${{ env.PLATFORM }}
           push: true
           build-args: |
