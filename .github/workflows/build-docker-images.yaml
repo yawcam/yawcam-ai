@@ -5,7 +5,7 @@ on:
 # Define environment variables for easy reuse
 env:
   DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
-  PLATFORM: linux/amd64,linux/arm64
+  PLATFORM: linux/amd64
   BUILD_YAWCAM_AI: 'true'
   BUILD_YAWCAM_AI_CUDA: 'true'
   BUILD_YAWCAM_AI_FULL: 'true'
