@@ -28,7 +28,7 @@ The images are tagged with version number and `latest` or `edge` tags:
 | `latest`       | Latest stable release                |
 | `edge`         | Most recent release (Stable OR Beta) |
 | `1.7.0`        | Specific version (example)           |
-| `1.8.0-beta.2` | Specific version (example)           |
+| `1.8.0-beta.3` | Specific version (example)           |
 
 Please note that the `edge` tag will always point to the most recent version, regardless if that version is stable or beta.
 So choose the `edge` tag if you always want the newest features and improvements as soon as they are available.
