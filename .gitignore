@@ -1,0 +1,6 @@
+# Docker bind mounts
+data/
+
+# IDE
+.idea/
+.vscode/
