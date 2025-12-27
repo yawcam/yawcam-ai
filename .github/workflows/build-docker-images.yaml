@@ -1,9 +1,6 @@
 name: Build & Push Docker Images
 on:
   workflow_dispatch: # allow the action to be run manually on selected branches
-  push: # Add this temporarily
-    branches:
-      - 'docker' # Trigger on pushes to the 'docker' branch
 
 # Define environment variables for easy reuse
 env:
