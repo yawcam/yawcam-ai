@@ -3,7 +3,7 @@ services:
     image: yawcam/yawcam-ai:latest # Use :latest or :edge tag
     container_name: yawcam-ai
     restart: unless-stopped
-    stop_grace_period: 15s
+    stop_grace_period: 20s
     ports:
       - "5995:5995"
     volumes:
