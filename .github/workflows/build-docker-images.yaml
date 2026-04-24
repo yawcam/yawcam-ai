@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 📄 Get version
         id: get-version
@@ -34,7 +34,7 @@ jobs:
 
       # --- Docker Hub Authentication ---
       - name: 🔑 Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ env.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
@@ -42,17 +42,17 @@ jobs:
       # --- Setup QEMU for Multi-Arch Builds ---
       # This is a best practice to allow building for arm64 (e.g., Raspberry Pi)
       - name: ⚙️ Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       # --- Setup Buildx (The modern Docker builder) ---
       - name: ⚙️ Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       # --- Generate Metadata & Tags ---
       - name: 🐳 Docker Meta, yawcam-ai
         if: ${{ env.BUILD_YAWCAM_AI == 'true' }}
         id: meta-yawcam-ai
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.DOCKER_USERNAME }}/yawcam-ai
           tags: |
@@ -66,7 +66,7 @@ jobs:
       # --- Build and Push the Image ---
       - name: 🏗️ Build and Push, yawcam-ai
         if: ${{ env.BUILD_YAWCAM_AI == 'true' }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./docker/yawcam-ai
           file: ./docker/yawcam-ai/Dockerfile
@@ -83,7 +83,7 @@ jobs:
       - name: 🐳 Docker Meta, yawcam-ai-cuda
         if: ${{ env.BUILD_YAWCAM_AI_CUDA == 'true' }}
         id: meta-yawcam-ai-cuda
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.DOCKER_USERNAME }}/yawcam-ai-cuda
           tags: |
@@ -97,7 +97,7 @@ jobs:
       # --- Build and Push the Image ---
       - name: 🏗️ Build and Push, yawcam-ai-cuda
         if: ${{ env.BUILD_YAWCAM_AI_CUDA == 'true' }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./docker/yawcam-ai-cuda
           file: ./docker/yawcam-ai-cuda/Dockerfile
@@ -114,7 +114,7 @@ jobs:
       - name: 🐳 Docker Meta, yawcam-ai-full
         if: ${{ env.BUILD_YAWCAM_AI_FULL == 'true' }}
         id: meta-yawcam-ai-full
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.DOCKER_USERNAME }}/yawcam-ai-full
           tags: |
@@ -128,7 +128,7 @@ jobs:
       # --- Build and Push the Image ---
       - name: 🏗️ Build and Push, yawcam-ai-full
         if: ${{ env.BUILD_YAWCAM_AI_FULL == 'true' }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./docker/yawcam-ai-full
           file: ./docker/yawcam-ai-full/Dockerfile
