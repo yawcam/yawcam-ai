@@ -13,13 +13,19 @@ ADD https://github.com/yawcam/yawcam-ai/releases/download/models/yolov4-tiny.wei
 ADD https://github.com/yawcam/yawcam-ai/releases/download/models/yolov7.weights /files/models/yolo-v7/
 
 # Download additional native libraries for CUDA support
-ARG LIB_VERSION="1.5.11"
+ARG LIB_VERSION="1.5.13"
 RUN LIB_DIR="/files/libs/${LIB_VERSION}" && \
     mkdir -p ${LIB_DIR} && \
     if [ "$TARGETARCH" = "amd64" ]; then \
-      curl -L -o ${LIB_DIR}/cuda-12.6-9.5-1.5.11-linux-x86_64-redist.jar https://repo1.maven.org/maven2/org/bytedeco/cuda/12.6-9.5-1.5.11/cuda-12.6-9.5-1.5.11-linux-x86_64-redist.jar; \
+      curl -L -o ${LIB_DIR}/cuda-redist-13.1-9.19-1.5.13-linux-x86_64.jar https://repo1.maven.org/maven2/org/bytedeco/cuda-redist/13.1-9.19-1.5.13/cuda-redist-13.1-9.19-1.5.13-linux-x86_64.jar; \
+      curl -L -o ${LIB_DIR}/cuda-redist-cublas-13.1-9.19-1.5.13-linux-x86_64.jar https://repo1.maven.org/maven2/org/bytedeco/cuda-redist-cublas/13.1-9.19-1.5.13/cuda-redist-cublas-13.1-9.19-1.5.13-linux-x86_64.jar; \
+      curl -L -o ${LIB_DIR}/cuda-redist-cudnn-13.1-9.19-1.5.13-linux-x86_64.jar https://repo1.maven.org/maven2/org/bytedeco/cuda-redist-cudnn/13.1-9.19-1.5.13/cuda-redist-cudnn-13.1-9.19-1.5.13-linux-x86_64.jar; \
+      curl -L -o ${LIB_DIR}/opencv-4.13.0-1.5.13-linux-x86_64-gpu.jar https://repo1.maven.org/maven2/org/bytedeco/opencv/4.13.0-1.5.13/opencv-4.13.0-1.5.13-linux-x86_64-gpu.jar; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
-      curl -L -o ${LIB_DIR}/cuda-12.6-9.5-1.5.11-linux-arm64-redist.jar https://repo1.maven.org/maven2/org/bytedeco/cuda/12.6-9.5-1.5.11/cuda-12.6-9.5-1.5.11-linux-arm64-redist.jar; \
+      curl -L -o ${LIB_DIR}/cuda-redist-13.1-9.19-1.5.13-linux-arm64.jar https://repo1.maven.org/maven2/org/bytedeco/cuda-redist/13.1-9.19-1.5.13/cuda-redist-13.1-9.19-1.5.13-linux-arm64.jar; \
+      curl -L -o ${LIB_DIR}/cuda-redist-cublas-13.1-9.19-1.5.13-linux-arm64.jar https://repo1.maven.org/maven2/org/bytedeco/cuda-redist-cublas/13.1-9.19-1.5.13/cuda-redist-cublas-13.1-9.19-1.5.13-linux-arm64.jar; \
+      curl -L -o ${LIB_DIR}/cuda-redist-cudnn-13.1-9.19-1.5.13-linux-arm64.jar https://repo1.maven.org/maven2/org/bytedeco/cuda-redist-cudnn/13.1-9.19-1.5.13/cuda-redist-cudnn-13.1-9.19-1.5.13-linux-arm64.jar; \
+      curl -L -o ${LIB_DIR}/opencv-4.13.0-1.5.13-linux-arm64-gpu.jar https://repo1.maven.org/maven2/org/bytedeco/opencv/4.13.0-1.5.13/opencv-4.13.0-1.5.13-linux-arm64-gpu.jar; \
     else \
         echo "Unsupported architecture: $TARGETARCH" && exit 1; \
     fi
