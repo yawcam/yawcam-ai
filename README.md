@@ -2,7 +2,7 @@
 Yawcam Ai is a free video surveillance software for security cameras and webcams. This powerful NVR software is easy to 
 use and can be installed on both Windows and Linux or run in a Docker container. 
 
-Yawcam Ai uses advanced machine learning and Ai algorithms to detect and recognize objects, people, and vehicles in 
+Yawcam Ai uses advanced machine learning and Ai algorithms to detect and recognize objects, people and vehicles in 
 real-time video streams.
 
 ### Releases
@@ -15,7 +15,7 @@ View older and beta releases here:
 https://github.com/yawcam/yawcam-ai/releases
 
 ### Container deployment
-Yawcam Ai can also be run in a Docker container. There are pre-built container images available on Docker Hub and example 
+Yawcam Ai can run in a Docker container. There are pre-built container images available on Docker Hub and example 
 docker-compose configuration files in this repo to get you started quickly.
 
 Images:
