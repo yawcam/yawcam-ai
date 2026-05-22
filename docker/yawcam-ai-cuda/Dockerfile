@@ -1,5 +1,5 @@
 # Use Ubuntu LTS as the base image
-FROM nvidia/cuda:12.9.1-base-ubuntu24.04
+FROM nvidia/cuda:13.1.2-base-ubuntu24.04
 
 # Define the argument that Docker Buildx passes automatically
 ARG TARGETARCH
