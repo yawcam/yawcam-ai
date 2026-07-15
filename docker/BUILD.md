@@ -32,8 +32,10 @@ To build the images locally using Docker buildx, follow these steps:
     export TAG="latest"                 # set desired image tag
     export YAWCAM_VERSION="1.7.0"       # set desired Yawcam Ai version
     export DOCKER_USER="<docker-user>"  # set your Docker Hub username
+    export TS_VERSION=$(cat ./tailscale_version.txt)
     docker buildx build \
       --build-arg YAWCAM_VERSION=${YAWCAM_VERSION} \
+      --build-arg TS_VERSION=${TS_VERSION} \
       --platform linux/amd64,linux/arm64 \
       --tag ${DOCKER_USER}/yawcam-ai:${TAG} \
       --tag ${DOCKER_USER}/yawcam-ai:${YAWCAM_VERSION} \
@@ -43,6 +45,7 @@ To build the images locally using Docker buildx, follow these steps:
     ```bash
     docker buildx build \
       --build-arg YAWCAM_VERSION=${YAWCAM_VERSION} \
+      --build-arg TS_VERSION=${TS_VERSION} \
       --platform linux/amd64 \
       --tag yawcam-ai:${TAG} \
       --tag yawcam-ai:${YAWCAM_VERSION} \
