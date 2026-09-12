@@ -49,6 +49,18 @@ RUN echo "Building version $YAWCAM_VERSION for architecture: $TARGETARCH" && \
     chmod +x /opt/yawcam-ai/YawcamAi.sh && \
     chmod +x /opt/yawcam-ai/YawcamAi-console.sh
 
+# Add Tailscale CLI
+ARG TS_VERSION
+RUN if [ -z "$TS_VERSION" ]; then echo "Error: TS_VERSION build argument must be set." && exit 1; fi && \
+    echo "Adding Tailscale CLI version $TS_VERSION for architecture: $TARGETARCH" && \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+        curl -fsSL https://pkgs.tailscale.com/stable/tailscale_${TS_VERSION}_amd64.tgz | tar xzf - --strip-components=1 -C /usr/local/bin tailscale_${TS_VERSION}_amd64/tailscale; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+        curl -fsSL https://pkgs.tailscale.com/stable/tailscale_${TS_VERSION}_arm64.tgz | tar xzf - --strip-components=1 -C /usr/local/bin tailscale_${TS_VERSION}_arm64/tailscale; \
+    else \
+        echo "Unsupported architecture: $TARGETARCH" && exit 1; \
+    fi
+
 # Set the working directory
 WORKDIR /opt/yawcam-ai
 
